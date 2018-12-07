@@ -118,6 +118,12 @@ app.use((request, response, next) => {
       }
     }
     if (!isBlocked) {
+      try {
+        pages = JSON.parse(fs.readFileSync('./pages.json'));
+      } catch (e) {
+        console.log("[ERROR]   COULD NOT LOAD THE PAGE FILE".red);
+        process.exit(0);
+      }
       for (i in pages.pages) {
         bool = false;
         if (request.originalUrl == pages.pages[i].url || request.originalUrl == pages.pages[i].url + "/") {
