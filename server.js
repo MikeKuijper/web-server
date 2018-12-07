@@ -100,7 +100,7 @@ try {
 }
 
 app.use((request, response, next) => {
-  console.log(maintenance);
+  //console.log(maintenance);
   if (!maintenance) {
     blocked = JSON.parse(fs.readFileSync('./blocked.json'));
     let isBlocked = false;
